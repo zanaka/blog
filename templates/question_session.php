@@ -4,6 +4,7 @@
     <title>お問い合わせ</title>
 </head>
 <body>
+<h1>お問い合わせ内容</h1>
 <form method="post" action="/question_session/result">
     名前
     <input type="text" name="name"><br>
