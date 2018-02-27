@@ -18,7 +18,7 @@ return [
 
         // database
         'db' => [
-            'host'   => 'localhost:3306',
+            'host'   => 'localhost',
             'user'   => 'testuser',
             'pass'   => 'pw4testuser',
             'dbname' => 'testdb'
