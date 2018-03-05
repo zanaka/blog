@@ -6,21 +6,27 @@ use Slim\Http\Response;
 
 // 一覧表示
 $app->get('/tickets', function (Request $request, Response $response) {
-    return $response->write('tickets');
-
+    $sql = 'SELECT * FROM tickets';
+    $stmt = $this->db->query($sql);
+    $tickets = [];
+    while($row = $stmt->fetch()) {
+        $tickets[] = $row;
+    }
+    $data = ['tickets' => $tickets];
+    return $this->renderer->render($response, 'tickets/index.phtml', $data);
 });
 
 // 新規作成用フォームの表示
 $app->get('/tickets/create', function (Request $request, Response $response) {
-    $subject = $request->getParsedBodyParam('subject');
-    return $this->renderer->render($response, 'tasks/create.phtml');
+    return $this->renderer->render($response, 'tickets/create.phtml');
 });
 
 // 新規作成
 $app->post('/tickets', function (Request $request, Response $response) {
     $subject = $request->getParsedBodyParam('subject');
     // ここに保存の処理を書く
-    $sql = 'INSERT INTO member (name) values (:subject)';
+    $sql = 'INSERT INTO tickets (subject) values (:subject)';
+    // コンテナに登録したPDOのオブジェクトは$this->dbでアクセスできる
     $stmt = $this->db->prepare($sql);
     $result = $stmt->execute(['subject' => $subject]);
     if (!$result) {
@@ -33,6 +39,15 @@ $app->post('/tickets', function (Request $request, Response $response) {
 
 // 表示
 $app->get('/tickets/{id}', function (Request $request, Response $response, array $args) {
+    $sql = 'SELECT * FROM tickets WHERE id = :id';
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute(['id' => $args['id']]);
+    $ticket = $stmt->fetch();
+    if (!$ticket) {
+        return $response->withStatus(404)->write('not found');
+    }
+    $data = ['ticket' => $ticket];
+    return $this->renderer->render($response, 'tickets/show.phtml', $data);
 });
 
 // 編集用フォームの表示
