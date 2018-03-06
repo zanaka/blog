@@ -4,6 +4,11 @@ use Slim\Http\Response;
 
 // Routes
 
+// トップページの表示
+$app->get('/', function (Request $request, Response $response) {
+    return $this->renderer->render($response, 'home/top.phtml');
+});
+
 // 一覧表示
 $app->get('/tickets', function (Request $request, Response $response) {
     $sql = 'SELECT * FROM tickets';
@@ -23,12 +28,15 @@ $app->get('/tickets/create', function (Request $request, Response $response) {
 
 // 新規作成
 $app->post('/tickets', function (Request $request, Response $response) {
-    $subject = $request->getParsedBodyParam('subject');
+    $title = $request->getParsedBodyParam('title');
+    $contents = $request->getParsedBodyParam('contents');
+
     // ここに保存の処理を書く
-    $sql = 'INSERT INTO tickets (subject) values (:subject)';
+    $sql = 'INSERT INTO tickets (title,contents) values (:title,:contents)';
+
     // コンテナに登録したPDOのオブジェクトは$this->dbでアクセスできる
     $stmt = $this->db->prepare($sql);
-    $result = $stmt->execute(['subject' => $subject]);
+    $result = $stmt->execute(['title' => $title, 'contents' => $contents]);
     if (!$result) {
         throw new \Exception('could not save the ticket');
     }
@@ -72,8 +80,10 @@ $app->put('/tickets/{id}', function (Request $request, Response $response, array
     if (!$ticket) {
         return $response->withStatus(404)->write('not found');
     }
-    $ticket['subject'] = $request->getParsedBodyParam('subject');
-    $stmt = $this->db->prepare('UPDATE tickets SET subject = :subject WHERE id = :id');
+    $ticket['title'] = $request->getParsedBodyParam('title');
+    $ticket['contents'] = $request->getParsedBodyParam('contents');
+
+    $stmt = $this->db->prepare('UPDATE tickets SET title = :title, contents = :contents WHERE id = :id');
     $stmt->execute($ticket);
     return $response->withRedirect("/tickets");
 });
@@ -91,35 +101,3 @@ $app->delete('/tickets/{id}', function (Request $request, Response $response, ar
     $stmt->execute(['id' => $ticket['id']]);
     return $response->withRedirect("/tickets");
 });
-
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
-});
-
-//
-//use Slim\Http\Request;
-//use Slim\Http\Response;
-//
-//// Routes
-//
-////固定パス
-////$app->get('/hello', function ($request, $response, $args) {
-////    echo 'Hello,world!';
-////});
-//
-//
-//$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-//    // Sample log message
-//    $this->logger->info("Slim-Skeleton '/' route");
-//
-//    // Render index view
-//    return $this->renderer->render($response, 'index.phtml', $args);
-//});
-//
-//
-//$app->get('/hello/{name}', function ($request, $response, $args) {
-//    return $this->renderer->render($response, 'index.phtml', $args);
-//});
