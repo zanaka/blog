@@ -1,18 +1,20 @@
 <?= $this->fetch('header.phtml') ?>
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">チケット詳細</h2>
+            <h2 class="card-title">ブログ詳細</h2>
             <div class="card-text">
                 <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>件名</th>
+                        <th>タイトル</th>
+                        <th>内容</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td><?= e($ticket['id']) ?></td>
+                        <td><?= e($ticket['subject']) ?></td>
                         <td><?= e($ticket['subject']) ?></td>
                     </tr>
                     </tbody>
@@ -25,7 +27,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">チケットの削除</h5>
+                                            <h5 class="modal-title">記事の削除</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
