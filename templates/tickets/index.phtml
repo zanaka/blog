@@ -3,11 +3,10 @@
         <div class="card-body">
             <h2 class="card-title">ブログ一覧</h2>
             <div class="card-text">
-                <a href="/tickets/create">ブログを書く</a>
                 <ul class="list-group">
                     <?php foreach ($tickets as $ticket): ?>
                         <li class="list-group-item">
-                            <a href="/tickets/<?= $ticket['id'] ?>"><?= e($ticket['subject']) ?></a>
+                            <a href="/tickets/<?= $ticket['id'] ?>"><?= e($ticket['title']) ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
