@@ -7,6 +7,12 @@ use Slim\Http\Response;
 
 class TicketsController extends Controller
 {
+    // トップ表示
+    public function top(Request $request, Response $response)
+    {
+        return $this->renderer->render($response, 'home/top.phtml');
+    }
+
     // 一覧表示
     public function index(Request $request, Response $response)
     {
