@@ -5,11 +5,8 @@ use Classes\Controllers\TicketsController;
 
 // Routes
 
-//// トップページの表示
-//$app->get('/', function (Request $request, Response $response) {
-//    return $this->renderer->render($response, 'home/top.phtml');
-//});
-
+// トップページの表示
+$app->get('/', TicketsController::class . ':top');
 // 一覧表示
 $app->get('/tickets', TicketsController::class . ':index');
 // 新規作成用フォームの表示
@@ -25,9 +22,9 @@ $app->put('/tickets/{id}', TicketsController::class . ':update');
 // 削除
 $app->delete('/tickets/{id}', TicketsController::class . ':delete');
 
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
-});
+//$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
+//    // Sample log message
+//    $this->logger->info("Slim-Skeleton '/' route");
+//    // Render index view
+//    return $this->renderer->render($response, 'index.phtml', $args);
+//});
