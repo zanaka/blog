@@ -35,8 +35,26 @@ class TicketsController extends Controller
     //新規作成
     public function store(Request $request, Response $response)
     {
-        $title = $request->getParsedBodyParam('title');
-        $contents = $request->getParsedBodyParam('contents');
+        //$title = $request->getParsedBodyParam('title');
+        //$contents = $request->getParsedBodyParam('contents');
+
+        $body = $request->getParsedBody();
+        //$bodyの中身
+        //array(6) {
+        // ["table"]=> string(1) "1"
+        // ["person"]=> string(1) "1"
+        // ["noodle"]=> string(1) "1"
+        // ["set"]=> string(1) "1"
+        // ["single"]=> string(1) "1"
+        // ["limited"]=> string(1) "1" }
+
+        $table = $body['table'];
+        $person = $body['person'];
+        $noodle = $body['noodle'];
+        $set = $body['set'];
+        $single = $body['single'];
+        $limited = $body['limited'];
+
 
         // ここに保存の処理を書く
         $sql = 'INSERT INTO tickets (title,contents) values (:title,:contents)';
