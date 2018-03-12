@@ -1,80 +1,17 @@
 <?= $this->fetch('header.phtml') ?>
+<?php require_once('data.php') ?>
     <form method="POST" action="/tickets">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">注文画面</h2>
-                <div class="card-text">
-                    <div class="form-group">
-                        <label for="title">席番号</label>
-                        <select name="table" id="">
-                            <?php
-                            for ($i=1; $i<=9; $i++) {
-                                echo "<option value='{$i}'>{$i}</option>";
-                            }
-                            ?>
-                        </select>
-
-                        <label for="contents">人数</label>
-                        <select name="person" id="">
-                            <?php
-                            for ($i=1; $i<=6; $i++) {
-                                echo "<option value='{$i}'>{$i}</option>";
-                            }
-                            ?>
-                        </select>
-                        <br>
-                        <label for="contents">メニュー</label>
-                        <br>
-                        そば
-                        <select name="noodle" id="">
-                            <?php
-                                $sql = 'SELECT * FROM product';
-                                $query = $this->db->prepare($sql);
-                                $query->execute();
-                                $data = $query->fetchAll(PDO::FETCH_ASSOC);
-                                var_dump($data);
-                                die;
-                            ?>
-                        </select>
-                        <br>
-                        セット/定食
-                        <select name="set" id="">
-                            <?php
-                            for ($i=1; $i<=6; $i++) {
-                                echo "<option value='{$i}'>{$i}</option>";
-                            }
-                            ?>
-                        </select>
-                        <br>
-                        単品
-                        <select name="single" id="">
-                            <?php
-                            for ($i=1; $i<=6; $i++) {
-                                echo "<option value='{$i}'>{$i}</option>";
-                            }
-                            ?>
-                        </select>
-                        <br>
-                        期間限定
-                        <select name="limited" id="">
-                            <?php
-                            for ($i=1; $i<=6; $i++) {
-                                echo "<option value='{$i}'>{$i}</option>";
-                            }
-                            ?>
-                        </select>
-
-
-
-                        <!--                        <input type="text" name="title" id="title" class="form-control">-->
-<!--                        <input type="text" name="contents" id="contents" class="form-control">-->
-
+        <h3>注文画面</h3>
+            <div class="menu-items">
+                <?php foreach ($menus as $menu): ?>
+                    <div class="menu-item">
+                        <h4 class="menu-item-name"><?php echo $menu->getName() ?></h4>
+                        <p class="price">¥<?php echo $menu->getPrice() ?></p>
+                        <input type="text" value="0" name="<?php echo $menu->getName() ?>">
+                        <span>個</span>
                     </div>
-                </div>
+                <?php endforeach ?>
             </div>
-            <div class="card-body">
-                <button class="btn btn-primary">注文</button>
-            </div>
-        </div>
+            <input type="submit" value="注文する">
     </form>
 <?= $this->fetch('footer.phtml') ?>
