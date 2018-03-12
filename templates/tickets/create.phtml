@@ -3,14 +3,24 @@
     <form method="POST" action="/tickets">
         <h3>注文画面</h3>
             <div class="menu-items">
-                <?php foreach ($menus as $menu): ?>
                     <div class="menu-item">
-                        <h4 class="menu-item-name"><?php echo $menu->getName() ?></h4>
-                        <p class="price">¥<?php echo $menu->getPrice() ?></p>
-                        <input type="text" value="0" name="<?php echo $menu->getName() ?>">
-                        <span>個</span>
+                        <select name="menu">
+                            <option value="そば">そば</option>
+                            <option value="皿そば">皿そば</option>
+                            <option value="やさいそば">やさいそば</option>
+                            <option value="ゆし豆腐そば">ゆし豆腐そば</option>
+                            <option value="肉もやしそば">肉もやしそば</option>
+                            <option value="そーみんちゃんぷるー">そーみんちゃんぷるー</option>
+                            <option value="ひらやーちー">ひらやーちー</option>
+                        </select>
+
+                        <select name="num" id="">
+                            <?php
+                            for($i=1; $i<=10; $i++)
+                            echo "<option value='{$i}'>{$i}</option>";
+                            ?>
+                        </select>
                     </div>
-                <?php endforeach ?>
             </div>
             <input type="submit" value="注文する">
     </form>
