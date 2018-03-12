@@ -1,12 +1,12 @@
 <?= $this->fetch('header.phtml') ?>
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">注文一覧</h2>
+            <h2 class="card-title">注文履歴</h2>
             <div class="card-text">
                 <ul class="list-group">
                     <?php foreach ($tickets as $ticket): ?>
                         <li class="list-group-item">
-                            <a href="/tickets/<?= $ticket['id'] ?>"><?= e($ticket['num']) ?></a>
+                            <a href="/tickets/<?= $ticket['id'] ?>"><?= e($ticket['date']) ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
