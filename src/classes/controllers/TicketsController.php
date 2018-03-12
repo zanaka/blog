@@ -40,28 +40,24 @@ class TicketsController extends Controller
 
         $body = $request->getParsedBody();
         //$bodyの中身
-        //array(6) {
-        // ["table"]=> string(1) "1"
-        // ["person"]=> string(1) "1"
-        // ["noodle"]=> string(1) "1"
-        // ["set"]=> string(1) "1"
-        // ["single"]=> string(1) "1"
-        // ["limited"]=> string(1) "1" }
+        //array(4) { ["そば"]=> string(1) "1"
+        // ["皿そば"]=> string(1) "0"
+        // ["琉球チャイ"]=> string(1) "0"
+        // ["氷ぜんざい"]=> string(1) "1" }
 
-        $table = $body['table'];
-        $person = $body['person'];
-        $noodle = $body['noodle'];
-        $set = $body['set'];
-        $single = $body['single'];
-        $limited = $body['limited'];
+       $num = $body['そば'];
+//        $sara = $body['皿そば'];
+//        $tyai = $body['琉球チャイ'];
+//        $zenzai = $body['氷ぜんざい'];
 
+//        $num = $body;
 
         // ここに保存の処理を書く
-        $sql = 'INSERT INTO tickets (title,contents) values (:title,:contents)';
+        $sql = 'INSERT INTO tickets (num) values (:num)';
 
         // コンテナに登録したPDOのオブジェクトは$this->dbでアクセスできる
         $stmt = $this->db->prepare($sql);
-        $result = $stmt->execute(['title' => $title, 'contents' => $contents]);
+        $result = $stmt->execute(['num' => $num]);
         if (!$result) {
             throw new \Exception('could not save the ticket');
         }
