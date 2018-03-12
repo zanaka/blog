@@ -16,7 +16,7 @@ class TicketsController extends Controller
     // 一覧表示
     public function index(Request $request, Response $response)
     {
-        $sql = 'SELECT * FROM tickets';
+        $sql = 'SELECT * FROM tickets ORDER BY date DESC';
         $stmt = $this->db->query($sql);
         $tickets = [];
         while($row = $stmt->fetch()) {
@@ -39,25 +39,19 @@ class TicketsController extends Controller
         //$contents = $request->getParsedBodyParam('contents');
 
         $body = $request->getParsedBody();
+
         //$bodyの中身
-        //array(4) { ["そば"]=> string(1) "1"
-        // ["皿そば"]=> string(1) "0"
-        // ["琉球チャイ"]=> string(1) "0"
-        // ["氷ぜんざい"]=> string(1) "1" }
+        //array(2) { ["menu"]=> string(4) "soba" ["num"]=> string(1) "1" }
 
-       $num = $body['そば'];
-//        $sara = $body['皿そば'];
-//        $tyai = $body['琉球チャイ'];
-//        $zenzai = $body['氷ぜんざい'];
-
-//        $num = $body;
+        $menu = $body['menu'];
+        $num = $body['num'] ?: "0";
 
         // ここに保存の処理を書く
-        $sql = 'INSERT INTO tickets (num) values (:num)';
+        $sql = 'INSERT INTO tickets (menu,num) values (:menu,:num)';
 
         // コンテナに登録したPDOのオブジェクトは$this->dbでアクセスできる
         $stmt = $this->db->prepare($sql);
-        $result = $stmt->execute(['num' => $num]);
+        $result = $stmt->execute(['menu' => $menu , 'num' => $num]);
         if (!$result) {
             throw new \Exception('could not save the ticket');
         }
