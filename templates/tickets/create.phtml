@@ -4,24 +4,72 @@
         <h3>注文画面</h3>
             <div class="menu-items">
                     <div class="menu-item">
-                        <select name="menu">
-                            <option value="そば">そば</option>
-                            <option value="皿そば">皿そば</option>
-                            <option value="やさいそば">やさいそば</option>
-                            <option value="ゆし豆腐そば">ゆし豆腐そば</option>
-                            <option value="肉もやしそば">肉もやしそば</option>
-                            <option value="そーみんちゃんぷるー">そーみんちゃんぷるー</option>
-                            <option value="ひらやーちー">ひらやーちー</option>
-                        </select>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            そば
+                        </button>
 
-                        <select name="num" id="">
-                            <?php
-                            for($i=1; $i<=10; $i++)
-                            echo "<option value='{$i}'>{$i}</option>";
-                            ?>
-                        </select>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">数量</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        何個注文しますか？
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" name="menu" value="1">1</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="2">2</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="3">3</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="4">4</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="5">5</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            ひらやーちー
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">数量</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        何個注文しますか？
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" name="menu" value="1">1</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="2">2</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="3">3</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="4">4</button>
+                                        <button type="submit" class="btn btn-primary" name="menu" value="5">5</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
             </div>
-            <input type="submit" value="注文する">
+            <input type="text" name="content">
+            <input type="submit" value="注文確定">
+        <p>
+            <?php echo $hoge; ?>は男です<br />
+            <?php echo $hoge; ?>の年齢は30歳です
+        </p>
     </form>
 <?= $this->fetch('footer.phtml') ?>
