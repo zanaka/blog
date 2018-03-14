@@ -1,75 +1,103 @@
 <?= $this->fetch('header.phtml') ?>
 <?php require_once('data.php') ?>
-    <form method="POST" action="/tickets">
-        <h3>注文画面</h3>
-            <div class="menu-items">
-                    <div class="menu-item">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            そば
-                        </button>
+<form method="POST" action="/tickets">
+    <h3>注文画面</h3>
+    <div class="menu-items">
+        <div class="menu-item">
+            <!-- Button trigger modal -->
+            <button type="button" name="menu" value="そば" class="btn btn-primary" data-toggle="modal" data-target="#soba">
+                <!--                            <img src="img/なる_ほど.png"/>-->
+                そば
+            </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">数量</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        何個注文しますか？
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" name="menu" value="1">1</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="2">2</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="3">3</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="4">4</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="5">5</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="soba" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">そばの注文個数を選択してください。</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            ひらやーちー
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">数量</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        何個注文しますか？
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" name="menu" value="1">1</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="2">2</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="3">3</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="4">4</button>
-                                        <button type="submit" class="btn btn-primary" name="menu" value="5">5</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="modal-body">
+                            何個注文しますか？(個数を指定した時点で注文が確定します!)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" name="num" value="1">1</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="2">2</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="3">3</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="4">4</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="5">5</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
                         </div>
                     </div>
+                </div>
             </div>
-            <input type="text" name="content">
-            <input type="submit" value="注文確定">
-        <p>
-            <?php echo $hoge; ?>は男です<br />
-            <?php echo $hoge; ?>の年齢は30歳です
-        </p>
-    </form>
-<?= $this->fetch('footer.phtml') ?>
+
+            <!-- Button trigger modal -->
+            <button type="button" name="menu" value="ひらやーちー" class="btn btn-primary" data-toggle="modal" data-target="hirayachi">
+                ひらやーちー
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="hirayachi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">ひらやーちーの注文個数を選択してください。</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            何個注文しますか？(個数を指定した時点で注文が確定します!)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" name="num" value="1">1</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="2">2</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="3">3</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="4">4</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="5">5</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal-data2">modal</button>
+
+            <div class="modal fade" id="myModal-data2" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">タイトル</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInput1">入力フィールド１</label>
+                                    <input type="text" class="form-control" id="exampleInput1" placeholder="数値を入力してください">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput2">入力フィールド２</label>
+                                    <input type="text" class="form-control" id="exampleInput2" placeholder="数値を入力してください">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="modal-save" data-dismiss="modal">更新</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-result"></div>
+        </div>
+    </div>
+</form>
+
+</div>
+</body>
+</html>

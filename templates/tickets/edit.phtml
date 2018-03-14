@@ -1,21 +1,23 @@
 <?= $this->fetch('header.phtml') ?>
-    <form method="POST" action="/tickets/<?= e($ticket['id']) ?>">
-        <input type="hidden" name="_METHOD" value="put">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">編集画面</h2>
-                <div class="card-text">
-                    <div class="form-group">
-                        <label for="title">タイトル</label>
-                        <input type="text" name="title" id="title" class="form-control" value="<?= e($ticket['title']) ?>">
-                        <label for="contents">内容</label>
-                        <input type="text" name="contents" id="title" class="form-control" value="<?= e($ticket['contents']) ?>">
-                    </div>
+<form method="POST" action="/tickets/<?= e($ticket['id']) ?>">
+    <input type="hidden" name="_METHOD" value="put">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">編集画面</h2>
+            <div class="card-text">
+                <div class="form-group">
+                    <label for="title">タイトル</label>
+                    <input type="text" name="title" id="title" class="form-control" value="<?= e($ticket['title']) ?>">
+                    <label for="contents">内容</label>
+                    <input type="text" name="contents" id="title" class="form-control" value="<?= e($ticket['contents']) ?>">
                 </div>
             </div>
-            <div class="card-body">
-                <button class="btn btn-primary">更新</button>
-            </div>
         </div>
-    </form>
-<?= $this->fetch('footer.phtml') ?>
+        <div class="card-body">
+            <button class="btn btn-primary">更新</button>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>
