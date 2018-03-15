@@ -1,55 +1,55 @@
 <?= $this->fetch('header.phtml') ?>
-    <div class="card">
-        <div class="card-body">
-            <h2 class="card-title">注文詳細</h2>
-            <div class="card-text">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>メニュー</th>
-                        <th>個数</th>
-                        <th>合計金額</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><?= e($ticket['menu']) ?></td>
-                        <td><?= e($ticket['num']) ?></td>
-                        <td><?= $ticket['num'] * 500 ?></td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="3">
-                            <a href="/tickets/<?= e($ticket['id']) ?>/edit" class="btn btn-primary">編集</a>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
-                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">注文履歴の削除</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>本当に削除してよろしいですか？</p>
-                                        </div>
-                                        <form method="post" action="/tickets/<?= e($ticket['id']) ?>">
-                                            <input type="hidden" name="_METHOD" value="delete">
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-danger">削除</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                                            </div>
-                                        </form>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">注文詳細</h2>
+        <div class="card-text">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>メニュー</th>
+                    <th>個数</th>
+                    <th>合計金額</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><?= e($ticket['menu']) ?></td>
+                    <td><?= e($ticket['num']) ?></td>
+                    <td><?= $ticket['num'] * 500 ?></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <!--                            <a href="/tickets/--><?//= e($ticket['id']) ?><!--/edit" class="btn btn-primary">編集</a>-->
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">注文履歴の削除</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
+                                    <div class="modal-body">
+                                        <p>本当に削除してよろしいですか？</p>
+                                    </div>
+                                    <form method="post" action="/tickets/<?= e($ticket['id']) ?>">
+                                        <input type="hidden" name="_METHOD" value="delete">
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-danger">削除</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
+</div>
 <?= $this->fetch('footer.phtml') ?>

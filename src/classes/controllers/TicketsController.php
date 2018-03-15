@@ -51,7 +51,8 @@ class TicketsController extends Controller
 
         // コンテナに登録したPDOのオブジェクトは$this->dbでアクセスできる
         $stmt = $this->db->prepare($sql);
-        $result = $stmt->execute(['menu' => $menu , 'num' => $num]);
+        $result = $stmt->execute(['num' => $num]);
+//        $result = $stmt->execute(['menu' => $menu , 'num' => $num]);
         if (!$result) {
             throw new \Exception('could not save the ticket');
         }
