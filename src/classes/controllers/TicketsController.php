@@ -43,11 +43,11 @@ class TicketsController extends Controller
         //$bodyの中身
         //array(2) { ["menu"]=> string(4) "soba" ["num"]=> string(1) "1" }
 
-        $menu = $body['menu'];
+//        $menu = $body['menu'];
         $num = $body['num'] ?: "0";
 
         // ここに保存の処理を書く
-        $sql = 'INSERT INTO tickets (menu,num) values (:menu,:num)';
+        $sql = 'INSERT INTO tickets (num) values (:num)';
 
         // コンテナに登録したPDOのオブジェクトは$this->dbでアクセスできる
         $stmt = $this->db->prepare($sql);

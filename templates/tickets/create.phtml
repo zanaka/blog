@@ -1,10 +1,11 @@
 <?= $this->fetch('header.phtml') ?>
 <form method="POST" action="/tickets">
     <h3>注文画面</h3>
+
     <div class="menu-items">
         <div class="menu-item">
             <!-- 切り替えボタン -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#soba">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#soba">
                 そば
             </button>
 
@@ -13,52 +14,25 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">数量を選んでください</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">数量(選択後に確定します)</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <button type="button" class="btn btn-primary">1</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="1">1</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="2">2</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="3">3</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="4">4</button>
+                            <button type="submit" class="btn btn-primary" name="num" value="5">5</button>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                            <button type="button" class="btn btn-primary">保存</button>
+<!--                            <button type="button" class="btn btn-primary">保存</button>-->
                         </div><!-- /.modal-footer -->
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-
-
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal-data2">modal</button>
-
-            <div class="modal fade" id="myModal-data2" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">タイトル</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleInput1">入力フィールド１</label>
-                                    <input type="text" class="form-control" id="exampleInput1" placeholder="数値を入力してください">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput2">入力フィールド２</label>
-                                    <input type="text" class="form-control" id="exampleInput2" placeholder="数値を入力してください">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="modal-save" data-dismiss="modal">更新</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="modal-result"></div>
         </div>
     </div>
 </form>
